@@ -1,0 +1,147 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Coin Data Form</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background: url("{% static 'images/photo.png' %}");
+        background-size: cover;
+  }
+
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: rgba(29, 24, 24, 0.862);
+    }
+
+    form {
+      max-width: 800px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 15px;
+      background: #f4c7ff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(232, 17, 17, 0.1);
+    }
+
+    label {
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+      /* .btn {
+        background-color: #2196F3;
+        color: white;
+        padding: 12px 24px;
+        margin-top: 17px;
+        margin-left: 48%;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+      } */
+    /* #message {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    } */
+    .full-width {
+      grid-column: span 2;
+      text-align: center;
+
+    }
+
+    button {
+      padding: 10px 25px;
+      background-color: #2c8fdd;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1a6fb3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Coin Information Entry</h2>
+
+  
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="image_name">Image Name</label>
+    <input type="text" id="image_name" name="image_name">
+
+    <label for="currency">Currency</label>
+    <input type="text" id="currency" name="currency">
+
+    <label for="country">Country</label>
+    <input type="text" id="country" name="country">
+
+    <label for="coin_rupee_value">Coin Rupee Value</label>
+    <input type="text" id="coin_rupee_value" name="coin_rupee_value">
+
+    <label for="coin_year">Coin Year</label>
+    <input type="number" id="coin_year" name="coin_year">
+
+    <label for="coin_mint_marks">Coin Mint Marks</label>
+    <input type="text" id="coin_mint_marks" name="coin_mint_marks">
+
+    <label for="coin_mint_marks_city">Coin Mint Marks City</label>
+    <input type="text" id="coin_mint_marks_city" name="coin_mint_marks_city">
+
+    <label for="color">Color</label>
+    <input type="text" id="color" name="color">
+
+    <label for="shape">Shape</label>
+    <input type="text" id="shape" name="shape">
+
+    <label for="which_metal_body">Which Metal Body</label>
+    <input type="text" id="which_metal_body" name="which_metal_body">
+
+    <label for="coin_symbol">Coin Symbol</label>
+    <input type="text" id="coin_symbol" name="coin_symbol">
+
+    <label for="reverse_symbol">Reverse Symbol</label>
+    <input type="text" id="reverse_symbol" name="reverse_symbol">
+
+    <label for="weight">Weight</label>
+    <input type="text" id="weight" name="weight">
+
+    <label for="size">Size</label>
+    <input type="text" id="size" name="size">
+
+    <label for="image">Image</label>
+    <input type="file" id="image" name="image">
+
+    <div class="full-width">
+      <button type="submit">Submit</button>
+    </div>
+    
+  </form>
+  <!-- <button class="btn" onclick="alert('Data successfully inserted')">Submit</button>
+  <div id="message"></div> -->
+  <a href="{% url 'search_by_field' %}">Search Coins</a>
+
+</body>
+</html>

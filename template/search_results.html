@@ -1,0 +1,54 @@
+<h2>Search Results for "{{ search_field }}: {{ query }}"</h2>
+
+{% if results %}
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Country</th>
+                <th>Currency</th>
+                <th>Rupee Value</th>
+                <th>Shape</th>
+                <th>Image Name</th>
+                <th>Mint Marks</th>
+                <th>Mint City</th>
+                <th>Color</th>
+                <th>Metal</th>
+                <th>Symbol</th>
+                <th>Weight</th>
+                <th>Size</th>
+                <th>Image</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for coin in results %}
+                <tr>
+                    <td>{{ coin.coin_year }}</td>
+                    <td>{{ coin.country }}</td>
+                    <td>{{ coin.currency }}</td>
+                    <td>{{ coin.coin_rupee_value }}</td>
+                    <td>{{ coin.shape }}</td>
+                    <td>{{ coin.image_name }}</td>
+                    <td>{{ coin.coin_mint_marks }}</td>
+                    <td>{{ coin.coin_mint_marks_city }}</td>
+                    <td>{{ coin.color }}</td>
+                    <td>{{ coin.which_metal_body }}</td>
+                    <td>{{ coin.coin_symbol }}</td>
+                    <td>{{ coin.weight }}</td>
+                    <td>{{ coin.size }}</td>
+                    <td>
+                        {% if coin.image %}
+                            <img src="{{ coin.image.url }}" width="100">
+                        {% else %}
+                            No Image
+                        {% endif %}
+                    </td>
+                    <td>{{ coin.price }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No results found for your query.</p>
+{% endif %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coin Search</title>
+</head>
+<body style="background-color: #f7d1ff; padding: 30px;">
+    <h2>Search Coins</h2>
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit" style="background-color: #2196F3; color: white; padding: 8px 16px; border: none;">Search Data</button>
+    </form>
+
+    {% if coins is not None %}
+        <h3>Results:</h3>
+        <ul>
+            {% for coin in coins %}
+                <li>{{ coin }}</li>
+            {% empty %}
+                <li>No matching records found.</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

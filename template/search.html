@@ -1,0 +1,15 @@
+<!-- search.html -->
+<h2>Search Coins</h2>
+<form method="POST" action="{% url 'search_by_field' %}">
+    {% csrf_token %}
+    <label for="search_field">Search by:</label>
+    <select name="search_field" required>
+        <option value="coin_year">Coin Year</option>
+        <option value="country">Country</option>
+        <option value="currency">Currency</option>
+        <!-- Add more as needed -->
+    </select>
+
+    <input type="text" name="search_query" placeholder="Enter value" required>
+    <button type="submit">Search</button>
+</form>

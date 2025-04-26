@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Coin Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #888;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .upload-form {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+
+        <h1>Upload Coin Image</h1>
+
+        <form method="post" enctype="multipart/form-data" class="upload-form">
+            {% csrf_token %}
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit">Analyze Coin</button>
+        </form>
+
+        {% if coin_data %}
+        <h2>Coin Details</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in coin_data.items %}
+                <tr>
+                    <td>{{ key|capfirst }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+        {% if image_url %}
+        <h3>Uploaded Coin Image:</h3>
+        <img src="{{ image_url }}" alt="Uploaded coin" style="max-width: 300px; margin-top: 20px;">
+        {% endif %}
+    </center>
+    <!-- <a href="{% url 'search_by_field' %}">Search Coins</a> -->
+</body>
+
+</html>
